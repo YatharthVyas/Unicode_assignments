@@ -2,10 +2,10 @@
 <h1>Index</h1>
 <ol>
 	<li>
-		Task 1
+		<strong><big>Task 1</big></strong>
 		<ol> 
-			<li>To-Do List : Status-Completed</li>
-			<li>React App for Resume : Status-Pending</li>
+			<li><b>To-Do List </b>: Status-Completed</li>
+			<li><b>React App for Resume </b>: Status-Pending</li>
 		</ol>
 	</li>
 </ol>
