@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>To Do</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 	<!-- Linking boostrap -->
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 			<!-- Linking bootstrap java query -->
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>			<!-- Linking boostrap java script -->
+	<meta charset="utf-8">
+	<style>
+		/*Makes jumbotron background color a shade of black and the text lightgray*/
+		.jumbotron{
+			background-color: #262626;
+			color: lightgray;
+		}
+		/*Gives lightgray background color and adds a margin of 40px to the top of the page*/
+		body{
+			background-color: lightgray;
+			margin-top: 40px;
+		}
+		/*Adding a black color to our horizontal page break (Bootstrap makes them white by default)*/
+		hr{
+			width: 90% ;
+			border: 4px solid black;
+		}
+		/*Custom css to make our table dark themed*/
+		.dark{
+			background-color: #404040;
+			color: white;
+		}
+		/*To hide rows for delete, we give the row id="hide" and here we define its display to none*/
+		#hide{
+			display: none;
+		}
+	</style>
+</head>
+<body>	
+	<div class="container">
+		<div class="jumbotron">
+			<h1> To Do List <span class="glyphicon glyphicon-ok"></span></h1>
+			<br>
+			<p> One place to keep record of all your pending tasks !</p>
+		</div>
+	</div>
+	<hr>
+	<div class="container">
+		<div class="table-responsive">
+ 	 		<table class="table dark">
+	    		<tr rowspan=2>
+	    			<th>No.</th>
+	    			<th>Task</th>
+	    			<th> Complete Task </th>
+	    			<th> Delete Row </th>
+	    		</tr>
+	    		<tr>
+	    			<td>1 </td>
+	    			<td> Example Task 1 </td>
+	    			<td> <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>
+	    			<td> <button class="btn btn-danger" id="remove" ><span class="glyphicon glyphicon-trash"></span> Delete</button></td>
+	    		</tr>
+	    		<tr>
+	    			<td>2 </td>
+	    			<td>Complete Unicode Assignment</td>
+	    			<td>  <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>
+	    			<td> <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button></td>
+	    		</tr>
+	    		<tr>
+	    			<td>3 </td>
+	    			<td>Learn ReactJS</td>
+	    			<td> <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>
+	    			<td> <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button></td>
+	    		</tr>
+	    		<tr>
+	    			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addTask"><span class="glyphicon glyphicon-pencil"></span> Add Task</button>
+	    		</tr>
+	    		<div id="customTasks">
+
+	    		</div>
+	  		</table>
+	  		<div id="addTask" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>		<!-- to close the modal -->
+					<h1> Please provide the required information below: </h2>
+				</div>
+				<div class="modal-body">
+					<label>Task Name: </label>
+					<input type=text id="newTask">
+					<br>
+				</div>
+				<div class="modal-footer">
+					<button type="Submit" class="btn" onClick="edit()" data-dismiss="modal">Submit</button>
+					<!-- This button will call function edit () in JavaScript and toggle modal tp hidden -->
+          			<button type="button" class="btn" data-dismiss="modal">Close</button>
+          			<!-- This will close our modal -->
+        		</div>
+      		</div>
+    	</div>
+	</div>
+	<script>
+		function edit(){
+			$('.dark').append( 									//This will append data at the end of the table
+				'<tr>' +
+					'<td>' + 
+						ctr + 
+					'</td>' +
+					'<td>' + 
+						$('#newTask').val() + 
+					'</td>' +
+					'<td>  <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>' +
+					'<td> <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button></td>'+
+					'</tr>'	
+					);
+			ctr = ctr + 1;
+			$('#newTask').val("");								//This will clear the text field
+		};
+		var ctr = 4;
+		$(".btn-success").click(function(){ 
+			$(this).slideUp(500,function(){						//Using jQuery callback to perform the 2nd function after the first is over
+				var d = new Date();								//Defining a new variable to store current Date
+				$(this).closest("td").text("Task Completed on " + d);	//Displaying a message which shows the Date and time of task completion
+			});
+		});
+
+		$(".btn-danger").click(function(){						//This will add the id="hide" to our row. 
+			$(this).closest("tr").attr("id","hide");			//The css of hide has been defined to make its display: none;
+		});
+	</script>
+</body>
+</html>
