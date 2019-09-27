@@ -3,7 +3,7 @@
 <head>
 	<title>To Do</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">									<!-- For Mobile Responsiveness -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 	<!-- Linking boostrap -->
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 			<!-- Linking bootstrap java query -->
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>			<!-- Linking boostrap java script -->
@@ -45,19 +45,20 @@
 	</div>
 	<hr>
 	<div class="container">
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addTask"><span class="glyphicon glyphicon-pencil"></span> Add Task</button>
 		<div class="table-responsive">
  	 		<table class="table dark">
-	    		<tr rowspan=2>
+	    		<tr>							<!-- Heading Row -->
 	    			<th>No.</th>
 	    			<th>Task</th>
 	    			<th> Complete Task </th>
-	    			<th> Delete Row </th>
+	    			<th> Delete Task </th>
 	    		</tr>
-	    		<tr>
-	    			<td>1 </td>
-	    			<td> Example Task 1 </td>
-	    			<td> <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>
-	    			<td> <button class="btn btn-danger" id="remove" ><span class="glyphicon glyphicon-trash"></span> Delete</button></td>
+	    		<tr>							<!-- First Row for Example -->
+	    			<td>1 </td>					<!-- Sr No -->
+	    			<td> Example Task 1 </td>	<!-- Name of Task -->
+	    			<td> <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>	<!-- Button for Completing task -->
+	    			<td> <button class="btn btn-danger" id="remove" ><span class="glyphicon glyphicon-trash"></span> Delete</button></td> <!-- Button for deleting task -->
 	    		</tr>
 	    		<tr>
 	    			<td>2 </td>
@@ -71,12 +72,7 @@
 	    			<td> <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>
 	    			<td> <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button></td>
 	    		</tr>
-	    		<tr>
-	    			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addTask"><span class="glyphicon glyphicon-pencil"></span> Add Task</button>
-	    		</tr>
-	    		<div id="customTasks">
-
-	    		</div>
+	    			<!-- The dynamically added tasks will enter here as new rows -->
 	  		</table>
 	  		<div id="addTask" class="modal fade" role="dialog">
 		<div class="modal-dialog modal-lg">
@@ -92,19 +88,20 @@
 				</div>
 				<div class="modal-footer">
 					<button type="Submit" class="btn" onClick="edit()" data-dismiss="modal">Submit</button>
-					<!-- This button will call function edit () in JavaScript and toggle modal tp hidden -->
+					<!-- This button will call function edit() in JavaScript and toggle modal to hidden -->
           			<button type="button" class="btn" data-dismiss="modal">Close</button>
-          			<!-- This will close our modal -->
+          			<!-- This will close our modal without saving our changes -->
         		</div>
       		</div>
     	</div>
 	</div>
 	<script>
+		var ctr = 4;											//Counter for Sr No.
 		function edit(){
-			$('.dark').append( 									//This will append data at the end of the table
+			$('.dark').append( 									//This will append data at the end of the table (to make a new row)
 				'<tr>' +
 					'<td>' + 
-						ctr + 
+						ctr++ + 								//Counter is post-incremented  for Sr No.
 					'</td>' +
 					'<td>' + 
 						$('#newTask').val() + 
@@ -113,18 +110,18 @@
 					'<td> <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button></td>'+
 					'</tr>'	
 					);
-			ctr = ctr + 1;
-			$('#newTask').val("");								//This will clear the text field
+			$('#newTask').val("");								//This will clear the text field so you dont have to do it for future entries
 		};
-		var ctr = 4;
-		$(".btn-success").click(function(){ 
+		//================================================================================================================================
+		/*Note: I ran into a problem here, the dynamically added buttons (newly added buttons using Add Task) were not responding to the onClick() or $('.class').click or $("#id").on("click",function(){};) so i googled and found its because of something called Delegation where dynamically added elements dont fall under elements which were present when the page was loaded. Hence i have used $(document).on("click",".class",function(){};) here*/
+		//================================================================================================================================
+		$(document).on("click","button.btn-success",function(){ 
 			$(this).slideUp(500,function(){						//Using jQuery callback to perform the 2nd function after the first is over
 				var d = new Date();								//Defining a new variable to store current Date
 				$(this).closest("td").text("Task Completed on " + d);	//Displaying a message which shows the Date and time of task completion
 			});
 		});
-
-		$(".btn-danger").click(function(){						//This will add the id="hide" to our row. 
+		$(document).on("click","button.btn-danger",function(){						//This will add the id="hide" to our row. 
 			$(this).closest("tr").attr("id","hide");			//The css of hide has been defined to make its display: none;
 		});
 	</script>
