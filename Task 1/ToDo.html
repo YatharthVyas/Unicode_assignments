@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!-- This webpage will store a To-Do list. You can add new tasks, remove completed ones and delete specific individual tasks as well. It does not have back-end support so the dynamically added data will be removed on refresh -->
 <head>
 	<title>To Do</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,6 +34,42 @@
 		#hide{
 			display: none;
 		}
+		/*Styling of our input field*/
+		input{
+			border: 1px solid #ccc;
+			overflow: auto;
+			resize: vertical;
+			border-radius: 7px;
+			padding: 7px;
+			min-width: 80%;
+		}
+		/*Styling for submit button*/
+		#submit{
+			padding: 8px;
+			min-width: 150px;
+			cursor: pointer;
+		}
+		/*Styling to show white text over green background on hover*/
+		#submit:hover{
+			color: White;
+			background-color: #4CAF50;
+		}
+		/*Styling for reset button*/
+		#reset{
+			padding: 8px;
+			min-width: 150px;
+			cursor: pointer;
+		}
+		/*Styling to show white text over red background on hover*/
+		#reset:hover{
+			color: White;
+			background-color: Red;
+		}
+		/*Adds a light blue color when you focus (click on) the input field*/
+		input:focus
+		{
+			background-color: #e6f2ff;
+		}
 	</style>
 </head>
 <body>	
@@ -45,7 +82,8 @@
 	</div>
 	<hr>
 	<div class="container">
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addTask"><span class="glyphicon glyphicon-pencil"></span> Add Task</button>
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addTask"><span class="glyphicon glyphicon-pencil"></span> Add Task</button> 
+		<button class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-trash"></span> Clear Completed Tasks</button>
 		<div class="table-responsive">
  	 		<table class="table dark">
 	    		<tr>							<!-- Heading Row -->
@@ -74,6 +112,8 @@
 	    		</tr>
 	    			<!-- The dynamically added tasks will enter here as new rows -->
 	  		</table>
+	  		<!-- ------------------------------------------------------------------------------------------------------------------------- -->
+	  		<!-- ===============================================Modal Starts Here========================================================= -->
 	  		<div id="addTask" class="modal fade" role="dialog">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
@@ -87,13 +127,14 @@
 					<br>
 				</div>
 				<div class="modal-footer">
-					<button type="Submit" class="btn" onClick="edit()" data-dismiss="modal">Submit</button>
+					<button type="Submit" id="submit" class="btn" onClick="edit()" data-dismiss="modal">Submit</button>
 					<!-- This button will call function edit() in JavaScript and toggle modal to hidden -->
-          			<button type="button" class="btn" data-dismiss="modal">Close</button>
+          			<button type="button" id="reset" class="btn" data-dismiss="modal">Close</button>
           			<!-- This will close our modal without saving our changes -->
         		</div>
       		</div>
     	</div>
+    	<!-- =====================================================End of Modal============================================================ -->
 	</div>
 	<script>
 		var ctr = 4;											//Counter for Sr No.
@@ -115,15 +156,32 @@
 		//================================================================================================================================
 		/*Note: I ran into a problem here, the dynamically added buttons (newly added buttons using Add Task) were not responding to the onClick() or $('.class').click or $("#id").on("click",function(){};) so i googled and found its because of something called Delegation where dynamically added elements dont fall under elements which were present when the page was loaded. Hence i have used $(document).on("click",".class",function(){};) here*/
 		//================================================================================================================================
+		//--------------------------------------------------------------------------------------------------------------------------------
+		//============================================Function when you click on Done=====================================================
 		$(document).on("click","button.btn-success",function(){ 
 			$(this).slideUp(500,function(){						//Using jQuery callback to perform the 2nd function after the first is over
 				var d = new Date();								//Defining a new variable to store current Date
+				$(this).closest("tr").attr("class","finish");						
 				$(this).closest("td").text("Task Completed on " + d);	//Displaying a message which shows the Date and time of task completion
+
+				//$(this).closest("tr").attr("id","hide"); 				 For some unknown reason, if I write this below $('this').closest("td"), it doesnt work. so i have commented it out and left it here
 			});
 		});
+		//================================================================================================================================
+		//--------------------------------------------------------------------------------------------------------------------------------
+		//===========================================Function when you click on Delete Task===============================================
 		$(document).on("click","button.btn-danger",function(){						//This will add the id="hide" to our row. 
 			$(this).closest("tr").attr("id","hide");			//The css of hide has been defined to make its display: none;
 		});
+		//================================================================================================================================
+		//--------------------------------------------------------------------------------------------------------------------------------
+		//========================================Function when you click on Clear Completed Tasks========================================
+		$('button.btn-warning').click(function(){
+			$('.finish').each(function(){						//This will navigate through every row with the class finish
+				$(this).closest("tr").attr("id","hide");		//Same logic as in Delete Task
+			});
+		});
+		//================================================================================================================================
 	</script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <h1>Index</h1>
 <ol>
 	<li>
-		<strong><big>Task 1</big></strong>
+		<strong><u>Task 1<u></strong>
 		<ol> 
 			<li><b>To-Do List </b>: Status-Completed</li>
 			<li><b>React App for Resume </b>: Status-Pending</li>
