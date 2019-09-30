@@ -1,0 +1,103 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+h1.test{
+	color: red;
+	border: 2px solid black;
+}
+
+body{
+  background-color: lightgray;
+}
+.jumbotron{
+  background: url("https://goldbondultimate.com/wp-content/uploads/2017/06/new-jumbotron-background.png");
+  background-size: contain; 
+  color: white;
+}
+.resume{
+  border: 8px solid black;
+  background: url(http://www.pptbackgrounds.org/uploads/silver-light-blue-wave-abstract-backgrounds-powerpoint.jpg);
+  border-radius: 10%;
+  padding: 20px;
+}
+hr{
+  border: 2px solid black;
+}
+#name{
+  float: left;
+  font-size: 1.8em;
+}
+#email {
+  float: right;
+}
+#avatar {
+  border-radius: 50%;
+}
+.resume p{
+  font-size: 2em;
+  color: #0e1f45;
+}
+.resume{
+  display: none;
+}
+.form{
+  background-image: url(https://image.freepik.com/free-photo/wall-wallpaper-concrete-colored-painted-textured-concept_53876-31799.jpg);
+  width: inherit;
+  background-size: cover;
+  padding: 20px;
+  font-size: 2.6em;
+  color: white;
+}
+.form hr{
+  border: 2px solid white;
+}
+hr.Decor{
+  width:inherit;
+  background-color: #282c34;
+  border: 5px solid #282c34;
+}
+label{
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  color: black;
+}
+input:not([type="file"]){
+  width: inherit;
+  color: #282c34;
+}
+input[type="file"]{
+  color:black;
+}
+input:focus{
+  background-color: #e6f2ff;
+}
+.form h1{
+  padding: 20px;
+}
+#sub,#reset{
+  width:inherit;
+  font-size: 1.3em;
+  color: white;
+}
+#optionalDegree{
+  display: none;
+}
