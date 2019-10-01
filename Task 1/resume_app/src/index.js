@@ -2,8 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-//const element = <img src="https://icon-library.net/images/profile-picture-icon/profile-picture-icon-0.jpg" height="200px" />;
+// function Welcome(props) {
+//   return <h1>Hello, {props.name}</h1>;
+// }
 
+// function App(props) {
+//   return (
+//     <div>
+//       <Welcome name="Sara" />
+//       <Welcome name="Cahal" />
+//       <Welcome name="Edite" />
+//       <h1>{props.className}</h1>
+//     </div>
+//   );
+// }
+
+// ReactDOM.render(
+//   <App className="ok" />,
+//   document.getElementById('root')
+// );	
 ReactDOM.render(<App />, document.getElementById('root'));
 // class Test extends React.Component {
 //   render() {
