@@ -116,10 +116,10 @@ class MakeResume extends React.Component {
     					<div className="col-md-6"><input id="reset" type="reset" onClick={resetFunction}/></div>
     				</div>
 				</form><br/>
-				<div class="alert alert-success" id="successform">
+				<div className="alert alert-success" id="successform">
     				<strong>Success!</strong> Your Resume has been successfully updated. Scroll Up to check it.
   				</div>
-				<div class="alert alert-success" id="successform">
+				<div className="alert alert-success" id="successform">
     				<strong>Success!</strong> Your Resume has been successfully updated. Scroll Up to check it.
   				</div>
 			</div>
