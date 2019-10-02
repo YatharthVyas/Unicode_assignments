@@ -1,3 +1,18 @@
+## `ReactJS Resume App`
+<ul>
+<li>This App was made using ReactJS</li>
+<li>To run, use command (cmd terminal) 
+   npm start </li>
+<li>This app uses form input data to make a Resume for the user</li>
+<li>The input is updated live </li>
+<li>You can use the reset button to clear form input and the resume both</li>
+<li>Functions used: handleSubmit() , handleChange() and resetForm()</li>
+</ul>
+Components Folder has Resume.js which is imported to App.js for the Form and Resume App
+
+
+
+--------------------------------------------------------------------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
