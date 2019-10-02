@@ -3,11 +3,15 @@
 }
 body{
   background-color: lightgray;
+  font-size: 1.2em;
 }
 .jumbotron{
   background: url("https://goldbondultimate.com/wp-content/uploads/2017/06/new-jumbotron-background.png");
   background-size: cover; 
   color: white;
+}
+.jumbotron h1{
+  font-size: 4em;
 }
 .resume{
   border: 8px solid black;
@@ -31,8 +35,7 @@ hr{
 #avatar {
   border-radius: 50%;
 }
-p.resumeInner{
-  font-size: 2em;
+.resume{
   color: #0e1f45;
 }
 .resume{
@@ -43,7 +46,6 @@ p.resumeInner{
   width: inherit;
   background-size: cover;
   padding: 20px;
-  font-size: 2.6em;
   color: white;
 }
 .form hr{
@@ -53,10 +55,6 @@ hr.Decor{
   width:inherit;
   background-color: #282c34;
   border: 5px solid #282c34;
-}
-label{
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  color: black;
 }
 input:not([type="file"]){
   width: inherit;
@@ -76,6 +74,20 @@ input:focus{
   font-size: 1.3em;
   color: white;
 }
+#sub{
+  background-color: #66bf26;
+  border-color: black;
+}
+#sub:hover{
+  background-color: #43e046;
+}
+#reset{
+  background-color: red;
+  border-color: black;
+}
+#reset:hover{
+  background-color: #db5a46;
+}
 #optionalDegree{
   display: none;
 }
@@ -85,5 +97,4 @@ input:focus{
 footer{
   background-color: #282c34;
   color: white;
-  font-size: 1.4em;
 }

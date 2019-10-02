@@ -139,6 +139,10 @@
 	<script>
 		var ctr = 4;											//Counter for Sr No.
 		function edit(){
+			if($('#newTask').val() == ""){						//To display a warning message if input is void
+				alert("Please Enter A Task");
+			}
+			else{
 			$('.dark').append( 									//This will append data at the end of the table (to make a new row)
 				'<tr>' +
 					'<td>' + 
@@ -152,6 +156,7 @@
 					'</tr>'	
 					);
 			$('#newTask').val("");								//This will clear the text field so you dont have to do it for future entries
+			}
 		};
 		//================================================================================================================================
 		/*Note: I ran into a problem here, the dynamically added buttons (newly added buttons using Add Task) were not responding to the onClick() or $('.class').click or $("#id").on("click",function(){};) so i googled and found its because of something called Delegation where dynamically added elements dont fall under elements which were present when the page was loaded. Hence i have used $(document).on("click",".class",function(){};) here*/
