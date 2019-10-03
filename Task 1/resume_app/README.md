@@ -2,7 +2,8 @@
 <ul>
 <li>This App was made using ReactJS</li>
 <li>To run, use command (cmd terminal) 
-   npm start </li>
+   <ul><li>npm install </li>
+      <li>npm start</li></ul>
 <li>This app uses form input data to make a Resume for the user</li>
 <li>The input is updated live </li>
 <li>You can use the reset button to clear form input and the resume both</li>
