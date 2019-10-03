@@ -93,27 +93,27 @@
 	    			<th> Delete Task </th>
 	    		</tr>
 	    		<tr>							<!-- First Row for Example -->
-	    			<td>1 </td>					<!-- Sr No -->
+	    			<td class="num">1 </td>					<!-- Sr No -->
 	    			<td> Example Task 1 </td>	<!-- Name of Task -->
 	    			<td> <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>	<!-- Button for Completing task -->
 	    			<td> <button class="btn btn-danger" id="remove" ><span class="glyphicon glyphicon-trash"></span> Delete</button></td> <!-- Button for deleting task -->
 	    		</tr>
 	    		<tr>
-	    			<td>2 </td>
+	    			<td class="num">2 </td>
 	    			<td>Complete Unicode Assignment</td>
 	    			<td>  <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>
 	    			<td> <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button></td>
 	    		</tr>
 	    		<tr>
-	    			<td>3 </td>
+	    			<td class="num">3 </td>
 	    			<td>Learn ReactJS</td>
 	    			<td> <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>
 	    			<td> <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button></td>
 	    		</tr>
 	    			<!-- The dynamically added tasks will enter here as new rows -->
 	  		</table>
-	  		<!-- ------------------------------------------------------------------------------------------------------------------------- -->
-	  		<!-- ===============================================Modal Starts Here========================================================= -->
+	  		<!-- ------------------------------------------------------------------------------------------------ -->
+	  		<!-- ======================================Modal Starts Here============================================= -->
 	  		<div id="addTask" class="modal fade" role="dialog">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
@@ -134,7 +134,7 @@
         		</div>
       		</div>
     	</div>
-    	<!-- =====================================================End of Modal============================================================ -->
+    	<!-- ==========================================End of Modal============================================== -->
 	</div>
 	<script>
 		var ctr = 4;											//Counter for Sr No.
@@ -145,7 +145,7 @@
 			else{
 			$('.dark').append( 									//This will append data at the end of the table (to make a new row)
 				'<tr>' +
-					'<td>' + 
+					'<td class="num">' + 
 						ctr++ + 								//Counter is post-incremented  for Sr No.
 					'</td>' +
 					'<td>' + 
@@ -158,11 +158,11 @@
 			$('#newTask').val("");								//This will clear the text field so you dont have to do it for future entries
 			}
 		};
-		//================================================================================================================================
+		//=============================================================================================================
 		/*Note: I ran into a problem here, the dynamically added buttons (newly added buttons using Add Task) were not responding to the onClick() or $('.class').click or $("#id").on("click",function(){};) so i googled and found its because of something called Delegation where dynamically added elements dont fall under elements which were present when the page was loaded. Hence i have used $(document).on("click",".class",function(){};) here*/
-		//================================================================================================================================
-		//--------------------------------------------------------------------------------------------------------------------------------
-		//============================================Function when you click on Done=====================================================
+		//=============================================================================================================
+		//-------------------------------------------------------------------------------------------------------------
+		//==================================Function when you click on Done===========================================
 		$(document).on("click","button.btn-success",function(){ 
 			$(this).slideUp(500,function(){						//Using jQuery callback to perform the 2nd function after the first is over
 				var d = new Date();								//Defining a new variable to store current Date
@@ -172,21 +172,31 @@
 				//$(this).closest("tr").attr("id","hide"); 				 For some unknown reason, if I write this below $('this').closest("td"), it doesnt work. so i have commented it out and left it here
 			});
 		});
-		//================================================================================================================================
-		//--------------------------------------------------------------------------------------------------------------------------------
-		//===========================================Function when you click on Delete Task===============================================
+		//=============================================================================================================
+		//-------------------------------------------------------------------------------------------------------------
+		//======================================Function when you click on Delete Task============================
 		$(document).on("click","button.btn-danger",function(){						//This will add the id="hide" to our row. 
 			$(this).closest("tr").attr("id","hide");			//The css of hide has been defined to make its display: none;
+			ctr=1;
+			$('.num').each(function(){
+					$(this).html(ctr++);						//Sets the innerHTML to value of counter
+					if($(this).parent().attr("id") == "hide")	//decrements counter if parent row is hidden
+					{
+						ctr--;
+					}		
+			});
+
 		});
-		//================================================================================================================================
-		//--------------------------------------------------------------------------------------------------------------------------------
-		//========================================Function when you click on Clear Completed Tasks========================================
+		//=============================================================================================================
+		//-------------------------------------------------------------------------------------------------------------
+		//============================Function when you click on Clear Completed Tasks============================
 		$('button.btn-warning').click(function(){
 			$('.finish').each(function(){						//This will navigate through every row with the class finish
 				$(this).closest("tr").attr("id","hide");		//Same logic as in Delete Task
-			});
+				ctr=0;
+			})
 		});
-		//================================================================================================================================
+		//=============================================================================================================
 	</script>
 </body>
 </html>
