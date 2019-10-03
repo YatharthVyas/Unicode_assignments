@@ -177,8 +177,8 @@
 		//======================================Function when you click on Delete Task============================
 		$(document).on("click","button.btn-danger",function(){						//This will add the id="hide" to our row. 
 			$(this).closest("tr").attr("id","hide");			//The css of hide has been defined to make its display: none;
-			ctr=1;
-			$('.num').each(function(){
+			ctr=1;												//Initialising counter to 1
+			$('.num').each(function(){							//Traverses our Sr No. <td>
 					$(this).html(ctr++);						//Sets the innerHTML to value of counter
 					if($(this).parent().attr("id") == "hide")	//decrements counter if parent row is hidden
 					{
@@ -193,7 +193,14 @@
 		$('button.btn-warning').click(function(){
 			$('.finish').each(function(){						//This will navigate through every row with the class finish
 				$(this).closest("tr").attr("id","hide");		//Same logic as in Delete Task
-				ctr=0;
+				ctr=1;
+				$('.num').each(function(){							//Traverses our Sr No. <td>
+					$(this).html(ctr++);						//Sets the innerHTML to value of counter
+					if($(this).parent().attr("id") == "hide")	//decrements counter if parent row is hidden
+					{
+						ctr--;
+					}		
+			});
 			})
 		});
 		//=============================================================================================================
