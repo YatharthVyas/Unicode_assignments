@@ -1,3 +1,9 @@
+<h1>Temperature Converter App</h1>
+<ul>
+  <li>This app converts °C to °F and Kelvin</li>
+  <li>Used State and Props in class</li>
+</ul>
+-------------------------------------------------------------------------------------------------------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
