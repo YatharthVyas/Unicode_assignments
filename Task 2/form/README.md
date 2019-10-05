@@ -1,3 +1,11 @@
+<h1> Form Display App </h1>
+<ul>
+  <li>This form has input fields for user to enter input</li>
+  <li>The input is dynamically displayed</li>
+  <li>It will display name and age</li>
+</ul>
+<p>I have used class App to display the input form and then passed the arguments to another class Form where i display the output</p>
+----------------------------------------------------------------------------------------------------------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
