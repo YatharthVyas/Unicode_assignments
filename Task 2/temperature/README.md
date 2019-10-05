@@ -1,5 +1,5 @@
 <h1>Temperature Converter App</h1>
-<p>The Component TempConverter is used and its javascript is in Components Folder</p>
+<p>The Component TempConverter is used and its .js is in Components Folder</p>
 <ul>
   <li>This app converts °C to °F and Kelvin</li>
   <li>Used State and Props in class</li>
