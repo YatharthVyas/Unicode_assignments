@@ -4,3 +4,13 @@
 input{
   width:inherit;
 }
+.container{
+  border:2px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: lightblue;
+}
+.jumbotron{
+  background: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);
+  background-size: cover;
+}

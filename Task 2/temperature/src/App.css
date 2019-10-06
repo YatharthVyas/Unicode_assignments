@@ -6,3 +6,7 @@ hr{
   border: 5px solid black;
   background-color: black;
 }
+.jumbotron{
+	background: #00b09b; 
+	background: linear-gradient(to right, #96c93d, #00b09b); 
+}
