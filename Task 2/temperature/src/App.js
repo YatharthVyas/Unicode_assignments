@@ -12,7 +12,9 @@ function App() {
     		<p> This App will Convert the Temperature from °C to °F and Kelvin </p>
     	</div>
     	<hr/>
-     	<TempConvert />
+      <div className="container">
+     	  <TempConvert />
+      </div>
     </div>
   );
 }
