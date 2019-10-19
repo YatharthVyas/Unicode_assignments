@@ -15,4 +15,9 @@
 			<li><b>Form Display </b>: Status-Completed</li>
 		</ol>
 	</li>
+	<li>
+		<strong><u>Task 3</u></strong>
+		<ol>
+			<li><b>Zomato API Fetching</b>: Status-Completed</li>
+		</ol>
 </ol>

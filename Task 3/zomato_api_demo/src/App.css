@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+}
+.jumbotron{
+  background-image: url(https://b.zmtcdn.com/images/foodshots/cover/pizza3.jpg?output-format=webp);
+  background-size: cover;
+  padding: 20px;
+}
+.top{
+  height: 200px;
+}
+.title{
+  color: white;
+}
+.overlay{                          /*This will add black tint effect*/
+  background-color: rgba(0,0,0,0.3);
+  padding: 30px;
+}
+th{
+  font-size: x-large;
+}
+.footer{
+  font-size: small;
+}
+body{
+  background-color: lightgrey;
+}
