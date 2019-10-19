@@ -1,11 +1,18 @@
 ## Zomato API Demo APP
-
+I have tried to somewhat clone Zomato's Website
 This app uses Zomato's Daily_Menu API to fetch details of a restaurant's daily menu and displays it in a table format.
 It will print Loading if the API has not been fetched
 To run the app, use:
 ```
 npm install
 npm start
+```
+
+## Also Note: You will have to create a .env file in this folder with the following details:
+```
+#Example content in .env
+
+REACT_APP_API_KEY = your-api-key-here
 ```
 
 
