@@ -1,0 +1,100 @@
+.App {
+  text-align: center;
+}
+.res{
+  background-color: lightgray;
+  font-size: 1.2em;
+}
+.res-jumbo{
+  background: url("https://goldbondultimate.com/wp-content/uploads/2017/06/new-jumbotron-background.png");
+  background-size: cover; 
+  color: white;
+}
+.jumbotron h1{
+  font-size: 4em;
+}
+.resume{
+  border: 8px solid black;
+  background: url(http://www.pptbackgrounds.org/uploads/silver-light-blue-wave-abstract-backgrounds-powerpoint.jpg);
+  background-size: cover;
+  border-radius: 10%;
+  padding: 20px;
+}
+hr{
+  border: 2px solid black;
+}
+#name{
+  float: left;
+  font-size: 2.4em;
+  margin-left: 5%;
+}
+#email {
+  float: right;
+  margin-right: 5%;
+}
+#avatar {
+  border-radius: 50%;
+}
+.resume{
+  color: #0e1f45;
+}
+.resume{
+  display: none;
+}
+.form{
+  background-image: url(https://image.freepik.com/free-photo/wall-wallpaper-concrete-colored-painted-textured-concept_53876-31799.jpg);
+  width: inherit;
+  background-size: cover;
+  padding: 20px;
+  color: white;
+}
+.form hr{
+  border: 2px solid white;
+}
+hr.Decor{
+  width:inherit;
+  background-color: #282c34;
+  border: 5px solid #282c34;
+}
+input:not([type="file"]){
+  width: inherit;
+  color: #282c34;
+}
+input[type="file"]{
+  color:black;
+}
+input:focus{
+  background-color: #e6f2ff;
+}
+.form h1{
+  padding: 20px;
+}
+#sub,#reset{
+  width:inherit;
+  font-size: 1.3em;
+  color: white;
+}
+#sub{
+  background-color: #66bf26;
+  border-color: black;
+}
+#sub:hover{
+  background-color: #43e046;
+}
+#reset{
+  background-color: red;
+  border-color: black;
+}
+#reset:hover{
+  background-color: #db5a46;
+}
+#optionalDegree{
+  display: none;
+}
+#successform{
+  display:none;
+}
+footer{
+  background-color: #282c34;
+  color: white;
+}

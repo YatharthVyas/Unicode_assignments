@@ -20,4 +20,12 @@
 		<ol>
 			<li><b>Zomato API Fetching</b>: Status-Completed</li>
 		</ol>
+	</li>
+	<li>
+		<strong><u>Task 4</u></strong>
+		<ol>
+			<li><b>Homepage linking to all the other pages</b>: Status-Completed</li>
+			<li>Extra:<b>Homepage without using Router</b>:Status-Completed</li>
+		</ol>
+	</li>
 </ol>

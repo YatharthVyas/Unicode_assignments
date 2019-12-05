@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<!-- This webpage will store a To-Do list. You can add new tasks, remove completed ones and delete specific individual tasks as well. It does not have back-end support so the dynamically added data will be removed on refresh -->
+<head>
+	<title>To Do</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">									<!-- For Mobile Responsiveness -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 	<!-- Linking boostrap -->
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 			<!-- Linking bootstrap java query -->
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>			<!-- Linking boostrap java script -->
+	<meta charset="utf-8">
+	<style>
+		/*Makes jumbotron background color a shade of black and the text lightgray*/
+		.jumbotron{
+			background-color: #262626;
+			color: lightgray;
+		}
+		/*Gives lightgray background color and adds a margin of 40px to the top of the page*/
+		body{
+			background-color: lightgray;
+			margin-top: 40px;
+		}
+		/*Adding a black color to our horizontal page break (Bootstrap makes them white by default)*/
+		hr{
+			width: 90% ;
+			border: 4px solid black;
+		}
+		/*Custom css to make our table dark themed*/
+		.dark{
+			background-color: #404040;
+			color: white;
+		}
+		/*To hide rows for delete, we give the row id="hide" and here we define its display to none*/
+		#hide{
+			display: none;
+		}
+		/*Styling of our input field*/
+		input{
+			border: 1px solid #ccc;
+			overflow: auto;
+			resize: vertical;
+			border-radius: 7px;
+			padding: 7px;
+			min-width: 80%;
+		}
+		/*Styling for submit button*/
+		#submit{
+			padding: 8px;
+			min-width: 150px;
+			cursor: pointer;
+		}
+		/*Styling to show white text over green background on hover*/
+		#submit:hover{
+			color: White;
+			background-color: #4CAF50;
+		}
+		/*Styling for reset button*/
+		#reset{
+			padding: 8px;
+			min-width: 150px;
+			cursor: pointer;
+		}
+		/*Styling to show white text over red background on hover*/
+		#reset:hover{
+			color: White;
+			background-color: Red;
+		}
+		/*Adds a light blue color when you focus (click on) the input field*/
+		input:focus
+		{
+			background-color: #e6f2ff;
+		}
+	</style>
+</head>
+<body>	
+	<div class="container">
+		<div class="jumbotron">
+			<h1> To Do List <span class="glyphicon glyphicon-ok"></span></h1>
+			<br>
+			<p> One place to keep record of all your pending tasks !</p>
+		</div>
+	</div>
+	<hr>
+	<div class="container">
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addTask"><span class="glyphicon glyphicon-pencil"></span> Add Task</button> 
+		<button class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-trash"></span> Clear Completed Tasks</button>
+		<div class="table-responsive">
+ 	 		<table class="table dark">
+	    		<tr>							<!-- Heading Row -->
+	    			<th>No.</th>
+	    			<th>Task</th>
+	    			<th> Complete Task </th>
+	    			<th> Delete Task </th>
+	    		</tr>
+	    		<tr>							<!-- First Row for Example -->
+	    			<td class="num">1 </td>					<!-- Sr No -->
+	    			<td> Example Task 1 </td>	<!-- Name of Task -->
+	    			<td> <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>	<!-- Button for Completing task -->
+	    			<td> <button class="btn btn-danger" id="remove" ><span class="glyphicon glyphicon-trash"></span> Delete</button></td> <!-- Button for deleting task -->
+	    		</tr>
+	    		<tr>
+	    			<td class="num">2 </td>
+	    			<td>Complete Unicode Assignment</td>
+	    			<td>  <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>
+	    			<td> <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button></td>
+	    		</tr>
+	    		<tr>
+	    			<td class="num">3 </td>
+	    			<td>Learn ReactJS</td>
+	    			<td> <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>
+	    			<td> <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button></td>
+	    		</tr>
+	    			<!-- The dynamically added tasks will enter here as new rows -->
+	  		</table>
+	  		<!-- ------------------------------------------------------------------------------------------------ -->
+	  		<!-- ======================================Modal Starts Here============================================= -->
+	  		<div id="addTask" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>		<!-- to close the modal -->
+					<h1> Please provide the required information below: </h2>
+				</div>
+				<div class="modal-body">
+					<label>Task Name: </label>
+					<input type=text id="newTask">
+					<br>
+				</div>
+				<div class="modal-footer">
+					<button type="Submit" id="submit" class="btn" onClick="edit()" data-dismiss="modal">Submit</button>
+					<!-- This button will call function edit() in JavaScript and toggle modal to hidden -->
+          			<button type="button" id="reset" class="btn" data-dismiss="modal">Close</button>
+          			<!-- This will close our modal without saving our changes -->
+        		</div>
+      		</div>
+    	</div>
+    	<!-- ==========================================End of Modal============================================== -->
+	</div>
+	<script>
+		var ctr = 4;											//Counter for Sr No.
+		function edit(){
+			if($('#newTask').val() == ""){						//To display a warning message if input is void
+				alert("Please Enter A Task");
+			}
+			else{
+			$('.dark').append( 									//This will append data at the end of the table (to make a new row)
+				'<tr>' +
+					'<td class="num">' + 
+						ctr++ + 								//Counter is post-incremented  for Sr No.
+					'</td>' +
+					'<td>' + 
+						$('#newTask').val() + 
+					'</td>' +
+					'<td>  <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button></td>' +
+					'<td> <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button></td>'+
+					'</tr>'	
+					);
+			$('#newTask').val("");								//This will clear the text field so you dont have to do it for future entries
+			}
+		};
+		//=============================================================================================================
+		/*Note: I ran into a problem here, the dynamically added buttons (newly added buttons using Add Task) were not responding to the onClick() or $('.class').click or $("#id").on("click",function(){};) so i googled and found its because of something called Delegation where dynamically added elements dont fall under elements which were present when the page was loaded. Hence i have used $(document).on("click",".class",function(){};) here*/
+		//=============================================================================================================
+		//-------------------------------------------------------------------------------------------------------------
+		//==================================Function when you click on Done===========================================
+		$(document).on("click","button.btn-success",function(){ 
+			$(this).slideUp(500,function(){						//Using jQuery callback to perform the 2nd function after the first is over
+				var d = new Date();								//Defining a new variable to store current Date
+				$(this).closest("tr").attr("class","finish");						
+				$(this).closest("td").text("Task Completed on " + d);	//Displaying a message which shows the Date and time of task completion
+
+				//$(this).closest("tr").attr("id","hide"); 				 For some unknown reason, if I write this below $('this').closest("td"), it doesnt work. so i have commented it out and left it here
+			});
+		});
+		//=============================================================================================================
+		//-------------------------------------------------------------------------------------------------------------
+		//======================================Function when you click on Delete Task============================
+		$(document).on("click","button.btn-danger",function(){						//This will add the id="hide" to our row. 
+			$(this).closest("tr").attr("id","hide");			//The css of hide has been defined to make its display: none;
+			ctr=1;												//Initialising counter to 1
+			$('.num').each(function(){							//Traverses our Sr No. <td>
+					$(this).html(ctr++);						//Sets the innerHTML to value of counter
+					if($(this).parent().attr("id") == "hide")	//decrements counter if parent row is hidden
+					{
+						ctr--;
+					}		
+			});
+
+		});
+		//=============================================================================================================
+		//-------------------------------------------------------------------------------------------------------------
+		//============================Function when you click on Clear Completed Tasks============================
+		$('button.btn-warning').click(function(){
+			$('.finish').each(function(){						//This will navigate through every row with the class finish
+				$(this).closest("tr").attr("id","hide");		//Same logic as in Delete Task
+				ctr=1;
+				$('.num').each(function(){							//Traverses our Sr No. <td>
+					$(this).html(ctr++);						//Sets the innerHTML to value of counter
+					if($(this).parent().attr("id") == "hide")	//decrements counter if parent row is hidden
+					{
+						ctr--;
+					}		
+			});
+			})
+		});
+		//=============================================================================================================
+	</script>
+</body>
+</html>

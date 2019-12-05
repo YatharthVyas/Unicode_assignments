@@ -1,0 +1,30 @@
+.card{
+  width: fit-content;
+  background-color: #DCDCDC;
+}
+.card:hover{
+  border:1px solid black;
+}
+.card-header{
+  cursor: pointer;
+  width: fill-content;
+}
+.index-jumbo{
+  background-color: #C8C8C8;
+  border: 2px solid black;
+}
+#home{
+  cursor: pointer;
+  width: fit-screen;
+  background-color: black;
+  color: white;
+  font-size: large;
+  padding: 10px;
+}
+.infobox{
+  margin: 20px 50px 20px 50px;
+  font-size: large;
+  border: solid black 1px;
+  text-align: center;
+  vertical-align: center;
+}
