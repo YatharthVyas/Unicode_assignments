@@ -4,10 +4,12 @@ Task #1<br>
 Problem Statements:<br>
 1] Create a Todo list using HTML, CSS and JS.
 The project should include:
-1) An input for adding a new todo
-2) A check parameter that indicates whether a todo is completed or not
-3) A delete option for removing the todo
-4) Keep a decent, customized CSS
+<ul type="none">
+	<li>1) An input for adding a new todo</li>
+	<li>2) A check parameter that indicates whether a todo is completed or not</li>
+	<li>3) A delete option for removing the todo</li>
+	<li>4) Keep a decent, customized CSS</li>
+</ul>
 Note: Do not try to copy your code, we might immediately know whether the task is copied or
 not ! The tasks are beneficial for you guys only :)<br><br>
 2] Create an app using ReactJS.
