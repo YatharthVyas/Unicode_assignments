@@ -22,8 +22,8 @@
 
 ### 4. [Task 4](https://github.com/YatharthVyas/Unicode_assignments/tree/master/Task%204)
 
-	* __Homepage linking to other pages__ : Status - _Completed_
-	* __Homepage without using router__ : Status - _Completed_
+* __Homepage linking to other pages__ : Status - _Completed_
+* __Homepage without using router__ : Status - _Completed_
 	
 		
 	
