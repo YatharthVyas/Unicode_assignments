@@ -4,6 +4,7 @@
 body{
   background-color: lightgray;
   font-size: 1.2em;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .jumbotron{
   background: url("https://goldbondultimate.com/wp-content/uploads/2017/06/new-jumbotron-background.png");
@@ -49,12 +50,12 @@ hr{
   color: white;
 }
 .form hr{
-  border: 2px solid white;
+  border: 1px solid white;
 }
 hr.Decor{
   width:inherit;
   background-color: #282c34;
-  border: 5px solid #282c34;
+  border: 2px solid #011235;
 }
 input:not([type="file"]){
   width: inherit;
